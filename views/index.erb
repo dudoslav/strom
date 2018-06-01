@@ -4,22 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Strom</title>
+    <link rel="stylesheet" href="/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
+    <h1>Strom WebUI</h1>
     <a href="" onclick="javascript:event.target.port=9091" target="_blank">Transmission WebUI</a>
     <a href="" onclick="javascript:event.target.port=9292" target="_blank">DAM WebUI</a>
+
+    <ul>
+      <% download_files.each do |download_file| %>
+        <li onclick="move(this)"><%= download_file %></li>
+      <% end %>
+    </ul>
+
+    <script charset="utf-8" type="text/javascript">
+      const move = e => fetch('/move',
+                              { method: 'POST'
+                              , body: JSON.stringify({ name: e.innerText }) })
+                        .then(() => location.reload())
+    </script>
   </body>
-
-  <ul>
-    <% download_files.each do |download_file| %>
-      <li><a onclick="move(this)"><%= download_file %></a></li>
-    <% end %>
-  </ul>
-
-  <script charset="utf-8" type="text/javascript">
-    const move = e => fetch('/move'
-                           , { method: 'POST'
-                             , body: JSON.stringify({ name: e.innerText }) })
-                      .then(() => location.reload())
-  </script>
 </html>
