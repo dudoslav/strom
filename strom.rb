@@ -12,8 +12,8 @@ end
 post '/move' do
   cmd = JSON.parse(request.body.read)
   logger.info "Moving #{cmd}"
-  FileUtils.mv(File.join(settings.download_folder, cmd['name']),
-               File.join(settings.video_folder, cmd['name']))
+  `mv "#{File.join(settings.download_folder, cmd['name'])}" "#{File.join(settings.video_folder, cmd['name'])}"`
+  logger.info "Moved #{cmd}"
 end
 
 def download_files
