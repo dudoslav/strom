@@ -1,2 +1,2 @@
-download_folder: <%= ENV['STROM_DOWNLOAD_FOLDER'] || '/media/storage/downloads' %>
-video_folder: <%= ENV['STROM_VIDEO_FOLDER'] || '/media/storage/media/films'%>
+download_folder: <%= ENV['STROM_DOWNLOAD_FOLDER'] || '/downloads' %>
+video_folder: <%= ENV['STROM_VIDEO_FOLDER'] || '/videos'%>
